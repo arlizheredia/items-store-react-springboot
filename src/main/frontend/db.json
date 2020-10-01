@@ -1,0 +1,82 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Clothing",
+      "categories": [
+        {
+          "id": 1,
+          "name": "Baby"
+        },
+        {
+          "id": 2,
+          "name": "Clothes"
+        },
+        {
+          "id": 3,
+          "name": "Womans Clothes"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Shoes",
+      "categories": [
+        {
+          "id": 4,
+          "name": "Dress shoe"
+        },
+        {
+          "id": 5,
+          "name": "Fashion boot"
+        },
+        {
+          "id": 6,
+          "name": "Driving moccasins"
+        },
+        {
+          "id": 7,
+          "name": "Climbing shoe"
+        },
+        {
+          "id": 8,
+          "name": "Desert Boot"
+        },
+        {
+          "id": 9,
+          "name": "Earth shoe"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "name": "Ankle boot",
+      "cost": "56.45",
+      "department": "Shoes",
+      "category": "Fashion boot"
+    },
+    {
+      "id": 2,
+      "name": "Calf-length boot",
+      "cost": "34.56",
+      "department": "Shoes",
+      "category": "Fashion boot"
+    },
+    {
+      "id": 3,
+      "name": "Traditional moccasin",
+      "cost": "45.56",
+      "department": "Shoes",
+      "category": "Driving moccasins"
+    },
+    {
+      "id": 4,
+      "name": "x",
+      "cost": "12",
+      "department": "Clothing",
+      "category": "Womans Clothes"
+    }
+  ]
+}
