@@ -45,6 +45,8 @@ const AddItem = (props) => {
 
             addItem(newItem).then(() => {
                 props.history.push("/");
+            }).catch(reason => {
+                console.error("An error occurred while trying to create the item ", reason);
             });
         }
     })
