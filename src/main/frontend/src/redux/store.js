@@ -1,26 +1,25 @@
-import { createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { SET_DEPARTMENTS, SET_ITEMS, SET_CATEGORIES } from "./types";
+import {createStore} from "redux";
+import {Types} from "./types";
 
 /**
  * Estado inicial.
  * @type {{departments: [], categories: [], items: []}}
  */
 const INITIAL_STATE = {
-  /**
-   * Productos.
-   */
-  items: [],
+    /**
+     * Productos.
+     */
+    items: [],
 
-  /**
-   * Departamentos.
-   */
-  departments: [],
+    /**
+     * Departamentos.
+     */
+    departments: [],
 
-  /**
-   * Categorías de un departamento seleccionado.
-   */
-  categories: [],
+    /**
+     * Categorías de un departamento seleccionado.
+     */
+    categories: [],
 };
 
 /**
@@ -29,31 +28,33 @@ const INITIAL_STATE = {
  * @param action Acción.
  */
 const reducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case SET_ITEMS:
-      return {
-        ...state,
-        items: action.items,
-      };
-    case SET_DEPARTMENTS:
-      return {
-        ...state,
-        departments: action.departments,
-      };
-    case SET_CATEGORIES:
-      return {
-        ...state,
-        categories: action.categories,
-      };
-    default:
-      return state;
-  }
+    switch (action.type) {
+        case Types.SET_ITEMS:
+            return {
+                ...state,
+                items: action.items,
+            };
+        case Types.SET_DEPARTMENTS:
+            return {
+                ...state,
+                departments: action.departments,
+            };
+        default:
+            return state;
+    }
 };
 
 /**
- * Estado.
- * @type {Store<unknown, Action>}
+ * Estado con recuperación desde el almacenamiento en el LocalStore.
  */
-const store = createStore(reducer, composeWithDevTools());
+const store = createStore(reducer,
+    (localStorage['redux-store']) ? JSON.parse(localStorage['redux-store']) : {});
+
+/**
+ * Almacenamiento del estado en el LocalStore ante cambios.
+ */
+store.subscribe(() => {
+    localStorage['redux-store'] = JSON.stringify(store.getState())
+})
 
 export default store;

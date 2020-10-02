@@ -1,3 +1,8 @@
-export const SET_DEPARTMENTS = "SET_DEPARTMENTS";
-export const SET_CATEGORIES = "SET_CATEGORIES";
-export const SET_ITEMS = "SET_ITEMS";
+/**
+ * Tipos de Acciones para la transformación del estado.
+ */
+export const Types = {
+    SET_DEPARTMENTS: "SET_DEPARTMENTS",
+    SET_ITEMS: "SET_ITEMS"
+}
+

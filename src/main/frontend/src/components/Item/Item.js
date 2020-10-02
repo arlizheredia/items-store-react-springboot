@@ -1,14 +1,14 @@
 import React, {useState} from "react";
 import {
     Avatar,
-    ListItem,
-    ListItemAvatar,
-    IconButton,
+    Button,
     Dialog,
     DialogActions,
     DialogContent,
     DialogTitle,
-    Button,
+    IconButton,
+    ListItem,
+    ListItemAvatar,
     Tooltip
 } from "@material-ui/core";
 import Redeem from "@material-ui/icons/Redeem";
@@ -29,38 +29,39 @@ const Item = (props) => {
     const [itemId, setItemId] = useState(0);
 
     return (
-        <React.Fragment>
-            <div>
-                <Dialog
-                    disableBackdropClick
-                    disableEscapeKeyDown
-                    maxWidth="sm"
-                    open={itemId !== 0}
-                    aria-labelledby="confirmation-dialog-title"
-                >
-                    <DialogTitle id="confirmation-dialog-title">Delete</DialogTitle>
-                    <DialogContent>
-                        Delete this item from the Store?
-                    </DialogContent>
-                    <DialogActions>
-                        <Button
-                            type="button"
-                            className="outline"
-                            onClick={() => setItemId(0)}
-                            color="primary"
-                        >
-                            Cancel
-                        </Button>
-                        <Button
-                            type="button"
-                            className="outline"
-                            onClick={() => props.onDelete(itemId)}
-                            color="primary"
-                        >
-                            Yes
-                        </Button>
-                    </DialogActions>
-                </Dialog>
+        <div>
+            <Dialog
+                disableBackdropClick
+                disableEscapeKeyDown
+                maxWidth="sm"
+                open={itemId !== 0}
+                aria-labelledby="confirmation-dialog-title"
+            >
+                <DialogTitle id="confirmation-dialog-title">Delete</DialogTitle>
+                <DialogContent>
+                    Delete this item from the Store?
+                </DialogContent>
+                <DialogActions>
+                    <Button
+                        type="button"
+                        className="outline"
+                        onClick={() => setItemId(0)}
+                        color="primary"
+                    >
+                        Cancel
+                    </Button>
+                    <Button
+                        type="button"
+                        className="outline"
+                        onClick={() => props.onDelete(itemId)}
+                        color="primary"
+                    >
+                        Yes
+                    </Button>
+                </DialogActions>
+            </Dialog>
+            {
+                props.item &&
                 <ListItem>
                     <ListItemAvatar>
                         <Avatar>
@@ -91,10 +92,9 @@ const Item = (props) => {
                             </IconButton>
                         </Tooltip>
                     </ListItemSecondaryAction>
-                </ListItem>
-            </div>
-        </React.Fragment>
-    );
+                </ListItem>}
+        </div>
+    )
 }
 
 export default (Item);

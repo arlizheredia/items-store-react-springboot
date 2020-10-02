@@ -1,19 +1,27 @@
 import React from 'react';
-import {configure} from 'enzyme';
-import {shallow, mount, render} from 'enzyme';
+import {configure, mount} from 'enzyme';
 import Item from "./Item";
 import Adapter from 'enzyme-adapter-react-16';
 
 configure({adapter: new Adapter()});
 
-describe('Item 1', () => {
-    let container;
+describe('Item', () => {
+    let wrapper;
+    const item = {id: '0', name: 'name', cost: '12.20', department: 'Department', category: 'Category'};
+
     beforeEach(() => {
-       //jest.spyOn(React, 'useEffect').mockImplementation(f => f());
-        const item = {id: '0', name: 'name', cost: '12.20', department: 'Department', category: 'Category'};
-        container = shallow(<Item item={item}/>);
+        wrapper = mount(<Item item={item}/>);
     });
-    test('Item', () => {
-        expect(container).toBeDefined();
+
+    it('should create', () => {
+        expect(wrapper).not.toBeNull();
+    })
+
+    it('should have ListItem component', () => {
+        expect(wrapper.find('li.MuiListItem-container').length).toBe(1);
+    })
+
+    it('should have item in props', () => {
+        expect(wrapper.prop('item')).toEqual(item);
     })
 });

@@ -1,6 +1,6 @@
 In the project directory, you can run:
 
-### `mvn clean install package`
+### `mvn clean package`
 
 Create jar
 You can copy jar in any folder (INSTALL_DIRECTORY)

@@ -72,11 +72,25 @@
       "category": "Driving moccasins"
     },
     {
-      "id": 4,
-      "name": "x",
-      "cost": "12",
+      "name": "Moc Toe",
+      "cost": "45.80",
+      "department": "Shoes",
+      "category": "Driving moccasins",
+      "id": 4
+    },
+    {
+      "name": "5-Pack Floral Original Bodysuits",
+      "cost": "13.20",
       "department": "Clothing",
-      "category": "Womans Clothes"
+      "category": "Baby",
+      "id": 5
+    },
+    {
+      "name": "Christmas Collectible Bodysuit",
+      "cost": "12.45",
+      "department": "Clothing",
+      "category": "Baby",
+      "id": 6
     }
   ]
 }

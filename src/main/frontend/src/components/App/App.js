@@ -1,27 +1,24 @@
-import "./App.css";
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {SET_DEPARTMENTS} from "../../redux/types";
 import Button from "@material-ui/core/Button";
 import Items from "../Items/Items";
-import {deleteItem, setDepartments} from "../../utils/item-store-utils";
-import {setItems} from "../../utils/items-utils";
+import {deleteItem, getDepartments, getItems} from "../../utils/item-store-utils";
+import {Actions} from "../../redux/actions";
 
 /**
  * Implementa un componente principal de la Aplicación.
  */
 const App = (props) => {
     useEffect(() => {
-        //Obteniendo los departamentos.
-        setDepartments().then((departments) => {
-            props.dispatch({
-                type: SET_DEPARTMENTS,
-                departments: departments,
-            });
+        // Actualizando los departamentos para los formularios de Agregar y Actualizar productos.
+        getDepartments().then((departments) => {
+            props.dispatch(Actions.setDepartments(departments));
         });
 
         // Actualizando los productos.
-        setItems(props);
+        getItems().then((items) => {
+            props.dispatch(Actions.setItems(items));
+        });
     }, [])
 
     /**
@@ -37,7 +34,7 @@ const App = (props) => {
      */
     const onDelete = (itemId) => {
         deleteItem(itemId).then(() => {
-            setItems(props);
+            props.history.go(0);
         });
     };
 

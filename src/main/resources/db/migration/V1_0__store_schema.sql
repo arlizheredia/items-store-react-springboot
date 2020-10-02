@@ -40,4 +40,8 @@ VALUES ('Baby', 1),
 
 INSERT INTO item (name, cost, department, category)
 VALUES ('Ankle boot', 56.45, 'Shoes', 'Fashion boot'),
-       ('5-Pack Floral Original Bodysuits', 13.20, 'Clothing', 'Baby');
+       ('Calf-length boot', 34.56, 'Shoes', 'Fashion boot'),
+       ('Traditional moccasin', 45.56, 'Shoes', 'Driving moccasins'),
+       ('Moc Toe', 45.80, 'Shoes', 'Driving moccasins'),
+       ('5-Pack Floral Original Bodysuits', 13.20, 'Clothing', 'Baby'),
+       ('Christmas Collectible Bodysuit', 12.45, 'Clothing', 'Baby');

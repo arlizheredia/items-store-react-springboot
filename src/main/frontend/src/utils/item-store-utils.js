@@ -26,7 +26,7 @@ export const getItems = () => {
 /**
  * Obtiene los departamentos de la tienda.
  */
-export const setDepartments = () => {
+export const getDepartments = () => {
     return fetch(`${baseUrl}/departments`).then((response) =>
         response.json()
     );

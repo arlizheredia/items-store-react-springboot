@@ -8,8 +8,7 @@ import {connect} from "react-redux";
  * Implementa un componente para la visualización de productos.
  */
 const Items = (props) => {
-
-    return props.items.length > 0 ? (
+    return props.items ? (
         <div>
             <h1>Items</h1>
             <div className="items mb-1">

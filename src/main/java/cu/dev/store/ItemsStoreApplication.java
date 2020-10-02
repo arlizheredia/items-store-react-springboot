@@ -1,7 +1,5 @@
 package cu.dev.store;
 
-import cu.dev.store.service.DepartmentsService;
-import cu.dev.store.service.ItemsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,20 +17,9 @@ public class ItemsStoreApplication  {
 	}
 
 	@Bean
-	public CommandLineRunner start(ItemsService itemsService, DepartmentsService departmentsService) {
+	public CommandLineRunner start() {
 		return (args) -> {
-			log.info("Items Store starting ...");
-
-			//System.out.println(departmentsService.list());
-
-
-//			System.out.println(itemsService.list());
-//			Item item = itemsService.get(1);
-//			item.setName("y");
-//			System.out.println(itemsService.save(item));
-//
-//			itemsService.save(new Item( "x", 12.34f, "Shoes", "Fashion boot"));
-//			System.out.println(itemsService.list());
+			log.info("Items Store Application started");
 		};
 	}
 }

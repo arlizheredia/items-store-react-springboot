@@ -2,8 +2,8 @@
 @import '~8-point/8-point.css';
 
 body {
-  margin: 24px;
-  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 24px;
+    font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }

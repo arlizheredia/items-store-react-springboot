@@ -1,31 +1,22 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import "./AddItem.css";
-import {TextField, InputLabel, Select, MenuItem, Button} from "@material-ui/core";
+import {Button, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import {useFormik} from "formik";
-import {SET_DEPARTMENTS} from "../../redux/types";
-import {addItem, setDepartments} from "../../utils/item-store-utils";
+import {addItem} from "../../utils/item-store-utils";
 
 /**
  * Implementa un componente para agregar un producto.
  */
 const AddItem = (props) => {
+    /**
+     * Hooks
+     */
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        if (props.departments.length === 0) {
-            props.history.push("/");
-        }
-        //Actualizando los departamentos.
-        setDepartments().then((departments) => {
-            props.dispatch({
-                type: SET_DEPARTMENTS,
-                departments: departments,
-            });
-        });
-
-    }, []);
-
+    /**
+     * Formik wrapper para el Formulario.
+     */
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -61,7 +52,6 @@ const AddItem = (props) => {
     /**
      * Actualizar las categorías de un departamento.
      * @param departmentName Nombre del departamento.
-     * @param props Lista de departamentos.
      */
     const setCategoriesFromDepartment = (departmentName) => {
         const department = props.departments.find(
@@ -90,6 +80,7 @@ const AddItem = (props) => {
                     <TextField
                         name="cost"
                         label="Cost"
+                        type="number"
                         onChange={formik.handleChange}
                         value={formik.values.cost}
                         required/>
@@ -101,6 +92,7 @@ const AddItem = (props) => {
                         name="department"
                         labelId="department-label"
                         value={formik.values.department}
+                        placeholder="Select department ..."
                         onChange={(e) => {
                             formik.handleChange(e);
                             setCategoriesFromDepartment(e.target.value);
@@ -124,6 +116,7 @@ const AddItem = (props) => {
                         labelId="category-label"
                         onChange={formik.handleChange}
                         value={formik.values.category}
+                        placeholder="Select category ..."
                         required>
                         {categories.map((category) => {
                             return (
@@ -141,7 +134,7 @@ const AddItem = (props) => {
                 </Button>
             </form>}
         </div>
-    );
+    )
 }
 
 export default connect((state) => {

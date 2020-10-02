@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./UpdateItem.css";
-import {TextField, InputLabel, Select, MenuItem, Button} from "@material-ui/core";
+import {Button, InputLabel, MenuItem, Select, TextField} from "@material-ui/core";
 import {connect} from "react-redux";
 import {getItem, updateItem} from "../../utils/item-store-utils";
 import {useFormik} from "formik";
@@ -9,9 +9,15 @@ import {useFormik} from "formik";
  * Implementa un componente para la actualización de un producto.
  */
 const UpdateItem = (props) => {
+    /**
+     * Hooks
+     */
     const [itemUpdate, setItemUpdate] = useState(0);
     const [categories, setCategories] = useState([]);
 
+    /**
+     * Formik wrapper para el Formulario.
+     */
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -48,7 +54,6 @@ const UpdateItem = (props) => {
     /**
      * Actualizar las categorías de un departamento.
      * @param departmentName Nombre del departamento.
-     * @param props Propiedades.
      */
     const setCategoriesFromDepartment = (departmentName) => {
         const department = props.departments.find(
@@ -61,20 +66,13 @@ const UpdateItem = (props) => {
     }
 
     useEffect(() => {
-        if (props.departments.length === 0) {
-            props.history.push("/");
-        }
         // Obteniendo el producto.
         getItem(props.match.params.id).then((item) => {
-
             setCategoriesFromDepartment(item.department);
             setItemUpdate(item);
             formik.setValues(item);
         });
     }, [])
-
-
-
 
     return itemUpdate ? (
         <div>
@@ -94,6 +92,7 @@ const UpdateItem = (props) => {
                     <TextField
                         name="cost"
                         label="Cost"
+                        type="number"
                         onChange={formik.handleChange}
                         value={formik.values.cost}
                         required
@@ -106,6 +105,7 @@ const UpdateItem = (props) => {
                         name="department"
                         labelId="department-label"
                         value={formik.values.department}
+                        placeholder="Select department ..."
                         onChange={(e) => {
                             formik.handleChange(e);
                             setCategoriesFromDepartment(e.target.value, props.departments);
@@ -129,6 +129,7 @@ const UpdateItem = (props) => {
                         labelId="category-label"
                         onChange={formik.handleChange}
                         value={formik.values.category}
+                        placeholder="Select category ..."
                         required
                     >
                         {categories.map((category) => {
