@@ -7,8 +7,7 @@ import store from "./redux/store";
 import {Provider} from "react-redux";
 
 import App from "./components/App/App";
-import AddItem from "./components/AddItem/AddItem";
-import UpdateItem from "./components/UpdateItem/UpdateItem";
+import UpdateItem from "./components/ItemEditor/ItemEditor";
 
 import "./index.css";
 
@@ -17,7 +16,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Switch>
                 <Route exact path="/" component={App}/>
-                <Route path="/items/add" component={AddItem}/>
+                <Route path="/items/add" component={UpdateItem}/>
                 <Route path="/items/update/:id" component={UpdateItem}/>
             </Switch>
         </BrowserRouter>

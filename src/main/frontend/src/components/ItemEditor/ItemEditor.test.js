@@ -2,17 +2,14 @@ import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import store from "../../redux/store";
-import AddItem from "./AddItem";
+import UpdateItem from "./ItemEditor";
 
-
-// TODO redux-mock-store
 configure({adapter: new Adapter()});
 
-
-describe('AddItem', () => {
+describe('ItemEditor', () => {
     let wrapper;
     beforeEach(() => {
-        wrapper = shallow(<AddItem store={store}/>);
+        wrapper = shallow(<UpdateItem store={store}/>);
     });
 
     it('should create', () => {
