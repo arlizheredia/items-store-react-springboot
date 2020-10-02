@@ -47,6 +47,8 @@ const UpdateItem = (props) => {
 
             updateItem(item).then(() => {
                 props.history.push("/");
+            }).catch(reason => {
+                console.error("An error occurred while trying to update the item ", reason);
             });
         }
     })
