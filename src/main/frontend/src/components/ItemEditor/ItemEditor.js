@@ -129,7 +129,7 @@ const ItemEditor = (props) => {
                     >
                         {props.departments.map((department) => {
                             return (
-                                <MenuItem key={department.name} value={department.name}>
+                                <MenuItem key={department.id} value={department.name}>
                                     {department.name}
                                 </MenuItem>
                             );
