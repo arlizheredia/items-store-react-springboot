@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useCallback, useEffect} from "react";
 import {connect} from "react-redux";
 import Button from "@material-ui/core/Button";
 import Items from "../Items/Items";
@@ -25,18 +25,25 @@ const App = (props) => {
      * Redirección para actualizar un producto.
      * @param item Producto.
      */
-    const onUpdate = (item) => {
+    const onUpdate = useCallback((item) => {
         props.history.push(`/items/update/${item.id}`);
-    };
+    }, [props.history]);
 
     /**
      * Elimina un producto.
      */
-    const onDelete = (itemId) => {
+    const onDelete = useCallback((itemId) => {
         deleteItem(itemId).then(() => {
             props.history.go(0);
         });
-    };
+    }, [props.history]);
+
+    /**
+     * Al hacer vinculo en botón Agregar.
+     */
+    const onLinkAdd = () => {
+        props.history.push("/items/add");
+    }
 
     return (
         <div>
@@ -44,7 +51,7 @@ const App = (props) => {
             <Button
                 variant="contained"
                 color="primary"
-                onClick={() => props.history.push("/items/add")}
+                onClick={() => onLinkAdd()}
             >
                 Add Item
             </Button>
