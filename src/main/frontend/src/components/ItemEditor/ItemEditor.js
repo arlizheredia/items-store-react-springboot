@@ -99,9 +99,10 @@ const ItemEditor = (props) => {
                         label="Name"
                         value={formik.values.name}
                         onChange={formik.handleChange}
+                        error={formik.errors.name}
+                        helperText={formik.errors.name ? formik.errors.name : null}
                         required
                     />
-                    {formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
                 </div>
                 <div className="mb-2">
                     <TextField
@@ -110,9 +111,10 @@ const ItemEditor = (props) => {
                         type="number"
                         onChange={formik.handleChange}
                         value={formik.values.cost}
+                        error={formik.errors.cost}
+                        helperText={formik.errors.cost ? formik.errors.cost : null}
                         required
                     />
-                    {formik.errors.cost ? <div className="error">{formik.errors.cost}</div> : null}
                 </div>
                 <div className="mb-2">
                     <InputLabel id="department-label">Department</InputLabel>
@@ -120,6 +122,8 @@ const ItemEditor = (props) => {
                         name="department"
                         labelId="department-label"
                         value={formik.values.department}
+                        error={formik.errors.department}
+                        helperText={formik.errors.department ? formik.errors.department : null}
                         placeholder="Select department ..."
                         onChange={(e) => {
                             formik.handleChange(e);
@@ -135,7 +139,6 @@ const ItemEditor = (props) => {
                             );
                         })}
                     </Select>
-                    {formik.errors.department ? <div className="error">{formik.errors.department}</div> : null}
                 </div>
                 <div className="mb-2">
                     <InputLabel id="category-label">Category</InputLabel>
@@ -144,6 +147,8 @@ const ItemEditor = (props) => {
                         labelId="category-label"
                         onChange={formik.handleChange}
                         value={formik.values.category}
+                        error={formik.errors.category}
+                        helperText={formik.errors.category ? formik.errors.category : null}
                         placeholder="Select category ..."
                         required
                     >
@@ -155,11 +160,10 @@ const ItemEditor = (props) => {
                             );
                         })}
                     </Select>
-                    {formik.errors.category ? <div className="error">{formik.errors.category}</div> : null}
                 </div>
 
                 <Button type="submit" variant="contained" color="primary">
-                    Update
+                    {updateMode ? "Update" : "Add"}
                 </Button>
             </form>
         </div>
