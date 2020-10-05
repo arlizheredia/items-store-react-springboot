@@ -1,3 +1,7 @@
-.MuiInput-root {
-    width: 240px;
+.item-editor.MuiCard-root {
+    width: 340px;
+}
+
+.MuiInput-root, .MuiTextField-root {
+    width: 100%;
 }

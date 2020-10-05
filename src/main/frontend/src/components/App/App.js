@@ -1,23 +1,26 @@
-import React, {useCallback, useEffect} from "react";
-import {connect} from "react-redux";
-import Button from "@material-ui/core/Button";
+import React, {useCallback, useEffect, useState} from "react";
 import Items from "../Items/Items";
 import {deleteItem, getDepartments, getItems} from "../../utils/item-store-utils";
 import {Actions} from "../../redux/actions";
+import store from "../../redux/store";
 
 /**
  * Implementa un componente principal de la Aplicación.
  */
 const App = (props) => {
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         // Actualizando los departamentos para los formularios de Agregar y Actualizar productos.
         getDepartments().then((departments) => {
-            props.dispatch(Actions.setDepartments(departments));
+            store.dispatch(Actions.setDepartments(departments));
         });
 
         // Actualizando los productos.
+        setLoading(true);
         getItems().then((items) => {
-            props.dispatch(Actions.setItems(items));
+            store.dispatch(Actions.setItems(items));
+            setLoading(false);
         });
     }, [])
 
@@ -41,26 +44,17 @@ const App = (props) => {
     /**
      * Al hacer vinculo en botón Agregar.
      */
-    const onLinkAdd = () => {
+    const onLinkAdd = useCallback(() => {
         props.history.push("/items/add");
-    }
+    }, [props.history]);
 
     return (
         <div>
-            <Items onUpdate={onUpdate} onDelete={onDelete}/>
-            <Button
-                variant="contained"
-                color="primary"
-                onClick={() => onLinkAdd()}
-            >
-                Add Item
-            </Button>
+            {loading ? (<div className="mb-2">Loading Items ...</div>) :
+                (<Items onUpdate={onUpdate} onDelete={onDelete} onLinkAdd={onLinkAdd}/>)
+            }
         </div>
     );
 }
 
-export default connect((state) => {
-    return {
-        items: state.items,
-    };
-})(App);
+export default App;

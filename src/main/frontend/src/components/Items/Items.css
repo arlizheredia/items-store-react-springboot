@@ -1,4 +1,7 @@
 .items {
-    width: 400px;
-    border-bottom: solid 1px #ddd;
+    width: 472px;
+}
+
+.header {
+    font-size: 0.9em;
 }

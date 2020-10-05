@@ -19,12 +19,4 @@ describe('App', () => {
     it('should create', () => {
         expect(wrapper).not.toBeNull();
     })
-
-    it('should have Item components in DOM', () => {
-        expect(wrapper.find('Item').length).toEqual(items.length);
-    })
-
-    it('should have items in props of Items component', () => {
-        expect(wrapper.find('Items').prop('items')).toEqual(items);
-    })
 });

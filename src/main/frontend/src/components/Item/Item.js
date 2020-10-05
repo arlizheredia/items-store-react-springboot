@@ -1,3 +1,5 @@
+import "./Item.css";
+
 import React, {useState} from "react";
 import {
     Avatar,
@@ -16,7 +18,6 @@ import ListItemText from "@material-ui/core/ListItemText";
 import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
-import "./Item.css";
 
 /**
  * Implementa un componente presetacional para la visualización de un producto.
@@ -97,4 +98,4 @@ const Item = (props) => {
     )
 }
 
-export default (Item);
+export default Item;

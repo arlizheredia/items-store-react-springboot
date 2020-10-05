@@ -3,9 +3,8 @@ import {Types} from "./types";
 
 /**
  * Estado inicial.
- * @type {{departments: [], categories: [], items: []}}
  */
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
     /**
      * Productos.
      */
@@ -14,12 +13,7 @@ const INITIAL_STATE = {
     /**
      * Departamentos.
      */
-    departments: [],
-
-    /**
-     * Categorías de un departamento seleccionado.
-     */
-    categories: [],
+    departments: []
 };
 
 /**
@@ -27,7 +21,7 @@ const INITIAL_STATE = {
  * @param state Estado.
  * @param action Acción.
  */
-const reducer = (state = INITIAL_STATE, action) => {
+export const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case Types.SET_ITEMS:
             return {
