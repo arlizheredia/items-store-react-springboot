@@ -27,9 +27,12 @@ export const getItems = () => {
  * Obtiene los departamentos de la tienda.
  */
 export const getDepartments = () => {
-    return fetch(`${baseUrl}/departments`).then((response) =>
-        response.json()
-    );
+    return fetch(`${baseUrl}/departments`)
+        .then((response) => response.json())
+        .catch(reason => {
+            alert("Error while trying to get items.");
+            console.error("An error occurred while trying to get items ", reason);
+        });
 };
 
 /**
@@ -44,7 +47,12 @@ export const addItem = (item) => {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then((response) => response.json());
+    })
+        .then((response) => response.json())
+        .catch(reason => {
+            alert("Error while trying to create the item.");
+            console.error("An error occurred while trying to create the item ", reason);
+        });
 }
 
 /**
@@ -61,7 +69,12 @@ export const updateItem = (item) => {
             Accept: "application/json",
             "Content-Type": "application/json",
         },
-    }).then((response) => response.json());
+    })
+        .then((response) => response.json())
+        .catch(reason => {
+            alert("Error while trying to update the item ");
+            console.error("An error occurred while trying to update the item ", reason);
+        });
 }
 
 /**
@@ -76,6 +89,11 @@ export const deleteItem = (id) => {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then((response) => response.json());
+    })
+        .then((response) => response.json())
+        .catch(reason => {
+            alert("Error while trying to delete the item.");
+            console.error("An error occurred while trying to delete the item ", reason);
+        });
 }
 
