@@ -16,7 +16,7 @@ const ItemEditor = (props) => {
     const [itemId] = useState(props.match.params.id);
     const [loading, setLoading] = useState(false);
     const [categories, setCategories] = useState([]);
-    const [itemUpdate, setItemUpdate] = useState(undefined);
+    const [itemUpdate, setItemUpdate] = useState();
     const [updateMode, setUpdateMode] = useState(false);
     const departments = useSelector(state => state.departments)
 
@@ -69,12 +69,14 @@ const ItemEditor = (props) => {
                 updateItem(item).then(() => {
                     props.history.push("/");
                 }).catch(reason => {
+                    alert("Error while trying to update the item ");
                     console.error("An error occurred while trying to update the item ", reason);
                 });
             } else {
                 addItem(item).then(() => {
                     props.history.push("/");
                 }).catch(reason => {
+                    alert("Error while trying to create the item.");
                     console.error("An error occurred while trying to create the item ", reason);
                 });
             }
